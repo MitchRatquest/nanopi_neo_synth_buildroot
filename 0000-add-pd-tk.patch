@@ -17,7 +17,7 @@
  	source "package/fswebcam/Config.in"
  	source "package/ghostscript/Config.in"
 
---- a/Config.in	1969-12-31 18:00:00.000000000 -0600
+--- a/buildroot-2017.05-rc2/package/puredata/Config.in	1969-12-31 18:00:00.000000000 -0600
 +++ b/buildroot-2017.05-rc2/package/puredata/Config.in	2017-05-25 18:19:12.070549743 -0500
 @@ -0,0 +1,10 @@
 +config BR2_PACKAGE_PUREDATA
@@ -29,10 +29,10 @@
 +	
 +	help
 +		graphic realtime audio programming language
-
---- a/puredata.mk	1969-12-31 18:00:00.000000000 -0600
++
+--- a/buildroot-2017.05-rc2/package/puredata/puredata.mk	2017-05-25 14:10:17.310337000 -0500
 +++ b/buildroot-2017.05-rc2/package/puredata/puredata.mk	2017-05-25 18:18:50.406831167 -0500
-@@ -0,0 +1,17 @@
+@@ -0,0 +1,20 @@
 +################################################################################
 +#
 +# puredata
@@ -55,7 +55,7 @@
 +PUREDATA_PRE_CONFIGURE_HOOKS += PUREDATA_RUN_AUTOGEN
 +
 +$(eval $(autotools-package))
---- 0/Config.in	1969-12-31 18:00:00.000000000 -0600
+--- a/buildroot-2017.05-rc2/package/tk/Config.in	2017-05-25 14:10:17.310337000 -0500
 +++ b/buildroot-2017.05-rc2/package/tk/Config.in	2017-05-25 18:21:11.780994980 -0500
 @@ -0,0 +1,5 @@
 +config BR2_PACKAGE_TK
@@ -63,7 +63,7 @@
 +	depends on BR2_PACKAGE_TCL
 +	help
 +		Graphics library using tcl
---- 0/tk.mk	1969-12-31 18:00:00.000000000 -0600
+--- a/buildroot-2017.05-rc2/package/tk/tk.mk	1969-12-31 18:00:00.000000000 -0600
 +++ b/buildroot-2017.05-rc2/package/tk/tk.mk	2017-05-25 18:20:04.197872651 -0500
 @@ -0,0 +1,19 @@
 +################################################################################
@@ -85,8 +85,8 @@
 +
 +
 +$(eval $(autotools-package))
---- 0	1969-12-31 18:00:00.000000000 -0600
-+++ b//buildroot-2017.05-rc2/package/tk/0001-no-strtod.patch	2017-05-25 14:57:20.597056975 -0500
+--- a/buildroot-2017.05-rc2/package/tk/2017-05-25 14:10:17.310337000 -0500
++++ b/buildroot-2017.05-rc2/package/tk/0001-no-strtod.patch	2017-05-25 14:57:20.597056975 -0500
 @@ -0,0 +1,15 @@
 +--- a/unix/configure	2016-07-26 09:07:50.000000000 -0500
 ++++ b/unix/configure	2017-05-23 22:23:14.024124144 -0500
