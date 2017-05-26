@@ -13,9 +13,14 @@ In the git directory:
 This will download buildroot, unpack it, patch it, and create the packages/kernel/image. It should be painless.
 
 ## Installing
-The image will be at output/images/sdcard.img. You can copy this over using either dd or etcher. 
+Unzip the img with
 
-` dd if=output/images/sdcard.img of=/dev/sdX bs=1M`
+`unzip nanopi_buildroot.zip`
+
+
+If built, the image will be at images/sdcard.img. You can copy this over using either dd or etcher. 
+
+` dd if=images/sdcard.img of=/dev/sdX bs=1M`
 
 Etcher can be found [here](https://etcher.io/). 
 
