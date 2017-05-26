@@ -14,6 +14,8 @@ cp $BOARD_DIR/asound.conf $TARGET_DIR/etc
 cp $BOARD_DIR/interfaces $TARGET_DIR/etc/network
 cp $BOARD_DIR/sun8i-h3-nanopi-neo.dtb $IMAGE_DIR/sun8i-h3-nanopi-neo.dtb
 
+ln -s $TARGET_DIR/usr/bin/wish8.6 $TARGET_DIR/usr/bin/wish #pd needs this
+
 
 # U-Boot script
 "${MKIMAGE}" -C none -A arm -T script -d "${BOOT_CMD}" "${BOOT_CMD_H}"
