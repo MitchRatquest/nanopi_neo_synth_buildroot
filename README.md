@@ -10,7 +10,9 @@ In the git directory:
 
 `./create_img.sh`
 
-This will download buildroot, unpack it, patch it, and create the packages/kernel/image. It should be painless.
+This will download buildroot, unpack it, patch it, and create the packages/kernel/image. 
+
+Then move post-post-build.sh to the images/ directory and run it as root. Some config settings don't get properly set. 
 
 ## Installing
 Unzip the img with
