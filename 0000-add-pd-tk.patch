@@ -47,7 +47,7 @@
 +PUREDATA_AUTORECONF = YES 
 +PUREDATA_CONF_OPTS = --disable-portaudio --disable-portmidi --no-recursion
 +
-+PUREDATA_DEPENDENCIES = alsa-utils mplayer gettext tcl tk 
++PUREDATA_DEPENDENCIES = alsa-utils mplayer gettext tcl tk
 +
 +define PUREDATA_RUN_AUTOGEN
 +	cd $(@D) && PATH=$(BR_PATH) ./autogen.sh
@@ -81,7 +81,7 @@
 +TK_DEPENDENCIES = tcl
 +
 +TK_CONF = YES
-+TK_CONF_OPTS = --with-tcl=$(TOPDIR)/output/build/tcl-8.6.6/unix
++TK_CONF_OPTS = --with-tcl=$(TOPDIR)/../build/tcl-8.6.6/unix
 +
 +
 +$(eval $(autotools-package))
