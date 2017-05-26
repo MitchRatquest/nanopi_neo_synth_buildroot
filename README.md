@@ -19,6 +19,8 @@ The image will be at output/images/sdcard.img. You can copy this over using eith
 
 Etcher can be found [here](https://etcher.io/). 
 
+#### You will need to manually copy over the sun8i-h3-nanopi-neo.dtb to the 10Mb partition on the sd card. I have not patched that part of the build process. 
+
 ## Using
 The default login is root/root. You can change this with make menuconfig, under 
 
