@@ -10,6 +10,8 @@ In the git directory:
 
 `./create_img.sh`
 
+This will download buildroot, unpack it, patch it, and create the packages/kernel/image. It should be painless.
+
 ## Installing
 The image will be at output/images/sdcard.img. You can copy this over using either dd or etcher. 
 
