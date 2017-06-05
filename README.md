@@ -30,6 +30,8 @@ If you don't want to try building, unzip the img with
 
 `unzip nanopi_buildroot.zip`
 
+Github wont allow files over 25mb, so the legacy kernel image can be found at [this google drive link](https://drive.google.com/file/d/0B42tAZ6A-UbDVnQ3TzctVERzcjg/view?usp=sharing)
+
 If built, the image will be at images/sdcard.img. You can copy this over using either dd or etcher. 
 
 ` dd if=images/sdcard.img of=/dev/sdX bs=1M`
