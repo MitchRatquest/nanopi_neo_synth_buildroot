@@ -8,6 +8,7 @@
 
 VERSION=2017.05-rc2
 if [ ! -d buildroot-"$VERSION" ]
+then
 	wget https://git.busybox.net/buildroot/snapshot/buildroot-"$VERSION".tar.gz
 	tar zvxf buildroot-"$VERSION".tar.gz
 fi
