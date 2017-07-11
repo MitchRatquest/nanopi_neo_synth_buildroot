@@ -1,6 +1,6 @@
 #!/bin/bash
 #after you git clone run this
-
+topdir=$( pwd )
 #################################################
 ######YOU NEED SUBVERSION INSTALLED##############
 #################################################
@@ -82,22 +82,29 @@ make
 #in this case, the boot partition is 2048*512, so use 1048576 as offset
 #use the loop and offset flags in mount to modify the files on the SD card
 
-cd images/
+sudo su
+cd $topdir/images/
 if [ ! -d "tmp" ]
 then
-	sudo mkdir tmp 
+	mkdir tmp 
 fi
-sudo mount -o loop,offset=1048576 sdcard.img tmp #boot partition
+#automatically calculate offsets if you change your partition sizes
+#boot is always FAT32
+mount -o loop,offset="$(($(sudo fdisk -l sdcard.img | grep -w "FAT32" | awk '{print $3}')*512))" sdcard.img tmp
 
 rm tmp/sun8i-h3-nanopi-neo.dtb			#these files never worked for me
 rm tmp/boot.scr
 cp ../nanopi_neo_synth/workingboot/boot.cmd tmp/	#shamelessly stolen from a working legacy armbian image
 cp ../nanopi_neo_synth/workingboot/boot.scr tmp/	
 cp ../nanopi_neo_synth/workingboot/script.bin tmp/
-cp ../nanopi_neo_synth/workingboot/sun8i-h3-nanopi-neo.dtb tmp/
+umount tmp/ 
 
-sudo umount tmp/ 
-cd ..
+#mount the root partition (should handlew this with buildroot proper)
+mount -o loop,offset="$(($(sudo fdisk -l sdcard.img | grep -w "Linux" | awk '{print $2}')*512))" sdcard.img tmp
+cd tmp
+ln -s /usr/bin/wish8.6 /usr/bin/wish
+cd ../..
+umount tmp/
 
 echo "#########################################"
 echo "########### BUILD COMPLETE ##############"
