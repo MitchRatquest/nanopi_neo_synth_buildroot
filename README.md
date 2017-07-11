@@ -4,7 +4,7 @@ Patches and build procedure for generating a bootable linux image with puredata,
 ## Prerequisites
 To use buildroot on a debian system you'll need:
 
-  `sudo apt-get -y install build-essential gcc g++ binutils make`
+  `sudo apt-get -y install build-essential gcc g++ binutils make screen libncurses5-dev`
   
 To build the realtime legacy image you should use xenial 16.04 (a virtual machine is fine). It is based on the Armbian team's [dedicated work](https://docs.armbian.com/Developer-Guide_Build-Preparation/). Support them if you use this image, I couldn't have assembled it without them. 
 
