@@ -56,6 +56,12 @@ fi
 screen -dmS server python -m SimpleHTTPServer
 
 #wont find this when it builds for some reason
+#directory doesn't exist yet
+if [ ! -d "images" ]
+then
+	mkdir images 
+fi
+
 cp nanopi_neo_synth/sun8i-h3-nanopi-neo.dtb images/
 
 make O=$PWD -C buildroot-2017.05-rc2/ defconfig BR2_DEFCONFIG=../configs/3.4.112-rt-buildroot.config
