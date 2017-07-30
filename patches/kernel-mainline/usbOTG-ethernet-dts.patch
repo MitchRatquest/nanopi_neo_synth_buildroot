@@ -130,3 +130,22 @@
 +	usb0_id_det-gpios = <&pio 6 12 GPIO_ACTIVE_HIGH>; /* PG12 */
  	status = "okay";
  };
+
+--- a/arch/arm/boot/dts/sun8i-h3-nanopi.dtsi	2017-07-29 20:35:17.928133119 -0500
++++ b/arch/arm/boot/dts/sun8i-h3-nanopi.dtsi	2017-07-29 21:08:25.229796305 -0500
+@@ -141,6 +141,14 @@
+ 	status = "okay";
+ };
+ 
++&ohci0 {
++	status = "okay";
++};
++
++&ehci0 {
++	status = "okay";
++};
++
+ &usb_otg {
+ 	dr_mode = "otg";
+ 	status = "okay";
+
