@@ -11,19 +11,18 @@ To build the realtime legacy image you should use xenial 16.04 (a virtual machin
 Extra dependencies for the legacy image are python2.7 and screen. 
 
 ## Building
-In the git directory: 
+To build mainline:
 
-`./create_img.sh`
+`./create_mainline_img.sh`
 
-This will download buildroot, unpack it, patch it, and create the packages/kernel/image. 
+This will download buildroot, unpack it, patch it, and create the packages/kernel/image. It will set up buildroot for an out-of-tree build. After you run that script once, you can run `make` for the rest of development.
 
-Then move post-post-build.sh to the images/ directory and run it as root. Some config settings don't get properly set. 
 
 To build legacy:
 
 `./create_3.4.112-rt_img.sh`
 
-This will download buildroot, a linaro toolchain, an old commit from Armbian's linux branch when the realtime patch was working, compile the image, run some fixes on the image post-build, and exit. 
+This will download buildroot, a linaro toolchain, an old commit from Armbian's linux branch when the realtime patch was working, compile the image, run some fixes on the image post-build, and exit. From this point on, you can run `make` for development. This branch is no longer maintained. 
 
 ## Installing
 If you don't want to try building, unzip the img with
@@ -58,6 +57,7 @@ Buildroot uses only what is needed, and nothing more.
 * Boots in roughly 4 seconds (less with uboot delay at 0). 
 * Uses 8Mb of ram running puredata over X11 forwarding in mainline kernel (20mb in legacy)
 * Absolute package control
+* Only Configfs and legacy USB OTG drivers installed as modules
 
 
 ## Why?
@@ -66,10 +66,10 @@ I wanted a lightweight image running only the bare essentials for audio. The nan
 I understand the H3 is not well supported in mainline, so this does not currently support the integrated audio codec. The board has line out audio and a mic input, but I'd rather use a USB soundcard. A $2 CM108 was the used for initial testing, and a PCM2906 based sound card worked well. The PCM2906 is a usb codec on a chip, with only a few passives and an oscillator to function.
 
 ## Improvements
-Support for USB gadget devices are available in the kernel, but I haven't tested it. I can see use cases for MIDI, mass storage, and ethernet. 
-If a realtime patch ever comes out for 4.11.x it would be interesting to see if it improves IO performance. 
+~~Support for USB gadget devices are available in the kernel, but I haven't tested it. I can see use cases for MIDI, mass storage, and ethernet.~~ Tested and working USB gadget support via the micro USB port. 
 
-I have added the legacy image, but it is rather large, as Armbian's community builds debian images to handle anything a user might throw at it. Stripping away unnecessary modules will be a time consuming process but ultimately worth it. 
+~~If a realtime patch ever comes out for 4.11.x it would be interesting to see if it improves IO performance.~~ Realtime patch included for 4.11.9, compiles and has a latency in puredata of about 8ms. 
+
+I have added the legacy image, but it is rather large, as Armbian's community builds debian images to handle anything a user might throw at it. Stripping away unnecessary modules will be a time consuming process ~~but ultimately worth it.~~ not worth it. 
 
 Turning off subsystem not in use will save some thermal overhead. This would be done using fex files in legacy. 
-
