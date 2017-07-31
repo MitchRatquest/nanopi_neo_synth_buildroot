@@ -1,10 +1,3 @@
-Intro
-=====
-
-The instructions herein are valid for the FriendlyARM NanoPi NEO,
-both the 256MiB and 512MiB versions. They should also work for the
-NanoPi NEO Air, but this is untested so far.
-
 The FriendlyARM Nanopi NEO is a 4x4cm² board with an Allwiner H3 SoC:
   - quad-core Cortex-A7 @1.2GHz
   - 256 or 512MiB of DDR
@@ -14,32 +7,21 @@ The FriendlyARM Nanopi NEO is a 4x4cm² board with an Allwiner H3 SoC:
   - 10/100 ethernet MAC
   - GPIOs, SPI, I2c...
 
-Support for the Nanopi NEO in U-Boot and Linux is very recent, so only
-core, basic features are available.
-
-Unfortunately, support for the USB OTG is not
-yet upstream, but is being actively worked on.
+Confirmed working are USB OTG (legacy and configfs), ethernet (100M), and GPIO functions (via sysfs). 
 
 Two cores have been reserved for running high priority tasks using isolcpus=2,3 in boot.cmd.
 
-How to build
-============
+Bootdelay has been reduced to zero for faster boot times.
 
-    $ make nanopi_neo_synth_buildroot_defconfig
-    $ make
+With S40network disabled in /etc/init.d, it boots in roughly 4 seconds. 
 
-Note: you will need access to the internet to download the required
-sources.
+These config files create a working 4.11.9 PREEMPT RT kernel for the Nanopi Neo.
 
-You will then obtain an image ready to be written to your micro SDcard:
 
-    $ dd if=output/images/sdcard.img of=/dev/sdX bs=1M
-    
-    You can also use Etcher: https://etcher.io/
 
-Notes:
-  - replace 'sdX' with the actual device with your micro SDcard,
-  - you may need to be root to do that (use 'sudo').
+Improvements/TODO:
 
-Insert the micro SDcard in your NanoPi NEO and power it up. The console
-is on the serial line, 115200 8N1.
+Test I2C, SPI
+Enable FBTFT library from notro and test
+Stress test USB OTG
+Add cyclic RT test package
