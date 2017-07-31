@@ -1,0 +1,13 @@
+These settings allow a 3.4.113-RT build for the Nanopi Neo. The configs are based on armbian's work, and merely adapted for the buildroot system.
+
+This was an initial test to see if I could get a realtime kernel built for the Neo. There are some issues with the legacy branch:
+Overheating at idle
+Larger power draw
+Very strange kernel drivers
+Larger kernel size and ~20 megs of RAM usage running on boot
+
+
+Due to the overhead of modifying the I2S drivers to be useful to me, and having no documentation on how to do that, I've stopped developing for this branch.
+
+Since the mainline kernel performs better with regards to heat and power draw, is being actively maintained, and compiles to a smaller size, I have chosen that for my needs.
+
