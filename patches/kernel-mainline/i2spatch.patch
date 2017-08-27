@@ -532,8 +532,8 @@ index 62b307b0c846..1854405cbcb1 100644
 +	status = "okay";
 +};
 
---- sun4i-i2s.c.orig	2017-08-07 19:21:11.929631928 -0500
-+++ sun4i-i2s.c	2017-08-08 11:17:06.300776977 -0500
+--- a/sound/soc/sunxi/sun4i-i2s.c 2017-08-07 19:21:11.929631928 -0500
++++ b/sound/soc/sunxi/sun4i-i2s.c 2017-08-08 11:17:06.300776977 -0500
 @@ -31,6 +31,7 @@
  #define SUN4I_I2S_CTRL_MODE_MASK		BIT(5)
  #define SUN4I_I2S_CTRL_MODE_SLAVE			(1 << 5)
