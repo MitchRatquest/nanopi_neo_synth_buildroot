@@ -1,3 +1,6 @@
+Updated to 4.13, spidev warning patch from armbian, realtime patch from official repo.
+
+
 #from this friendly  blog: https://blog.christophersmart.com/2016/10/23/building-and-booting-upstream-linux-and-u-boot-for-orange-pi-one-arm-board/
 
 # [v4,01/10] ethernet: add sun8i-emac driver

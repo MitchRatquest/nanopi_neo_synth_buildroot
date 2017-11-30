@@ -9,12 +9,8 @@ BOOT_CMD="${BOARD_DIR}/boot.cmd"
 BOOT_CMD_H="${BINARIES_DIR}/boot.scr"
 
 #copy configuration files to image
-cp $BOARD_DIR/S45ntpdate 		$TARGET_DIR/etc/init.d
-cp $BOARD_DIR/asound.conf 		$TARGET_DIR/etc
-cp $BOARD_DIR/interfaces	 	$TARGET_DIR/etc/network
-cp $BOARD_DIR/S41usb 			$TARGET_DIR/etc/init.d
 mv $TARGET_DIR/etc/init.d/S40network	$TARGET_DIR/etc/init.d/network-disabled
 cp $TARGET_DIR/usr/bin/wish8.6 		$TARGET_DIR/usr/bin/wish
-mv $BOARD_DIR/dnsmasq.conf		$TARGET_DIR/etc/
+
 # U-Boot script
 "${MKIMAGE}" -C none -A arm -T script -d "${BOOT_CMD}" "${BOOT_CMD_H}"
