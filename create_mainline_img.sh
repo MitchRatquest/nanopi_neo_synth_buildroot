@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION=2017.05-rc2
+VERSION=2017.11-rc1
 
 if [ ! -d buildroot-"$VERSION" ]
 then
